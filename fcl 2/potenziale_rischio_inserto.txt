@@ -1,7 +1,0 @@
-Tempo di esecuzione,# Regole,# Regole Coperte,Numero Pattern,#Condizioni Totali,#Condizioni Compresse,Percentuale di compressione,Risoluzione,Iterazioni,Sovrapposizione
-0.002,6,6,2,12,6,50.00,1,10,true
- RULE 
-AB,M,,,
-BA,M,,,
-A,A,0.50,2,1
-B,B,0.50,2,1
