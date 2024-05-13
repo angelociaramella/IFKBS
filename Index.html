@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Tesi Magistrale Informatica Parthenope Napoli - Sposato Salvatore</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+        #rule {
+            height: 500px;
+        }
+
+        #cont-result {
+            height: 500px;
+            overflow-y: auto;
+        }
+
+        #result-text-table {
+            font-size: 15px;
+        }
+
+        #container-table-result {
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        .m-top-10 {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="Risoluzione">Risoluzione</label>
+                <input type="number" class="form-control" id="resolution" placeholder="1" value="1">
+            </div>
+            <div class="form-group">
+                <label for="Risoluzione">Max Profondità</label>
+                <input type="number" class="form-control" id="depth" placeholder="5" value="5">
+            </div>
+            <div class="form-group">
+                <label for="Numero di tentativi">Numero di tentativi</label>
+                <input type="number" class="form-control" id="numSteps" placeholder="10" value="10">
+            </div>
+            <div class="form-group">
+                <label for="Sovrapposizione">Sovrapposizione</label>
+                <input type="checkbox" id="overlap" checked>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="rule">Regole</label>
+                    <textarea class="form-control" id="rule" rows="5">
+                
+</textarea>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="pattern">Regole Ottimizzate</label>
+
+                    <div id="cont-result">
+                        <table id="result" class="table table-striped">
+                            <tr>
+                                <th>
+                                    Pattern
+                                </th>
+                                <th>
+                                    Classe
+                                </th>
+                                <th>
+                                    V
+                                </th>
+                                <th>
+                                    # Regole S Classe
+                                </th>
+                                <th>
+                                    # Regole A Classe
+                                </th>
+                            </tr>
+                            <tbody id="result-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Risultato</label>
+                    <div id="container-table-result">
+                        <table class="table table-striped table-condensed" id="result-text-table">
+                            <tr>
+                                <th>
+                                    Tempo di esecuzione
+                                </th>
+                                <th>
+                                    # Regole
+                                </th>
+                                <th>
+                                    # Regole Compresse coperte
+                                </th>
+                                <th>
+                                    # Regole compresse
+                                </th>
+                                <th>
+                                    # Condizioni Regole
+                                </th>
+                                <th>
+                                    # Condizioni Regole Compresse
+                                </th>
+                                <th>
+                                    Test
+                                </th>
+                                <th>
+                                    Precentuale compressione
+                                </th>
+                            </tr>
+                            <tbody id="result-text-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn btn-sm btn-info m-top-10" id="execute">Ottimizza</div>
+                    <div class="btn btn-sm btn-info m-top-10" id="btn-save-file">Salva Risultato</div>
+                    <div class="btn btn-sm btn-danger m-top-10" id="reset-result">Reset</div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="scripts/graph/graph.js"></script>
+</body>
+</html>
