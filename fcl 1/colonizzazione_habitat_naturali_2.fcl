@@ -1,0 +1,49 @@
+FUNCTION_BLOCK colonizzazione_habitat_naturali_2
+
+
+VAR_INPUT
+   invasivita_organi : REAL;
+   vie_migrazione_organi : REAL;
+END_VAR
+
+VAR_OUTPUT
+   colonizzazione_habitat_naturali_2 : REAL;
+END_VAR
+
+FUZZIFY invasivita_organi
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+END_FUZZIFY
+FUZZIFY vie_migrazione_organi
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+END_FUZZIFY
+
+DEFUZZIFY colonizzazione_habitat_naturali_2
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+AAA,
+ABM,
+AMA,
+BAM,
+BBB,
+BMM,
+MAA,
+MBM,
+MMM
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

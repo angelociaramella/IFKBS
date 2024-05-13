@@ -1,0 +1,74 @@
+FUNCTION_BLOCK campi
+
+
+VAR_INPUT
+   GM : REAL;
+   ibridazione_in_funzione_distanza : REAL;
+   sovrapposizione_fioritura_campi : REAL;
+   semi_germinabili : REAL;
+END_VAR
+
+VAR_OUTPUT
+   campi : REAL;
+END_VAR
+
+FUZZIFY GM
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+END_FUZZIFY
+FUZZIFY ibridazione_in_funzione_distanza
+   TERM alto := 0 ;
+   TERM basso := 1 ;
+   TERM medio := 2 ;
+END_FUZZIFY
+FUZZIFY sovrapposizione_fioritura_campi
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+END_FUZZIFY
+FUZZIFY semi_germinabili
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+END_FUZZIFY
+
+DEFUZZIFY campi
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   TERM unanswered := -1 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+AAAAA,
+AAABA,
+AABAA,
+AABBM,
+ABAAA,
+ABABM,
+ABBAM,
+ABBBB,
+AMAAA,
+AMABA,
+AMBAA,
+AMBBM,
+BAAAA,
+BAABM,
+BABAM,
+BABBB,
+BBAAM,
+BBABB,
+BBBAB,
+BBBBB,
+BMAAA,
+BMABM,
+BMBAM,
+BMBBB
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

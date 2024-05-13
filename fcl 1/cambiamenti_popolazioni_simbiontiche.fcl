@@ -1,0 +1,42 @@
+FUNCTION_BLOCK cambiamenti_popolazioni_simbiontiche
+
+
+VAR_INPUT
+   cambiamenti_interazioni_PSGM_org_simbionti : REAL;
+   vantaggi_selettivi_trasf_simbionti : REAL;
+END_VAR
+
+VAR_OUTPUT
+   cambiamenti_popolazioni_simbiontiche : REAL;
+END_VAR
+
+FUZZIFY cambiamenti_interazioni_PSGM_org_simbionti
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+END_FUZZIFY
+FUZZIFY vantaggi_selettivi_trasf_simbionti
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+END_FUZZIFY
+
+DEFUZZIFY cambiamenti_popolazioni_simbiontiche
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+AAA,
+ABM,
+BAM,
+BBB
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

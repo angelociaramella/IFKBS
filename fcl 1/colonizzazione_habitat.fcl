@@ -1,0 +1,73 @@
+FUNCTION_BLOCK colonizzazione_habitat
+
+
+VAR_INPUT
+   ibridazione_selvatiche : REAL;
+   differenze_capacita_ibridazione : REAL;
+   rischio_polline : REAL;
+END_VAR
+
+VAR_OUTPUT
+   colonizzazione_habitat : REAL;
+END_VAR
+
+FUZZIFY ibridazione_selvatiche
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+END_FUZZIFY
+FUZZIFY differenze_capacita_ibridazione
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY rischio_polline
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+END_FUZZIFY
+
+DEFUZZIFY colonizzazione_habitat
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+AAAA,
+AABA,
+AAMA,
+ABAA,
+ABBB,
+ABMM,
+AUAA,
+AUBM,
+AUMA,
+BAAA,
+BABB,
+BAMM,
+BBAB,
+BBBB,
+BBMB,
+BUAM,
+BUBB,
+BUMM,
+MAAA,
+MABM,
+MAMM,
+MBAM,
+MBBB,
+MBMM,
+MUAA,
+MUBM,
+MUMM
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

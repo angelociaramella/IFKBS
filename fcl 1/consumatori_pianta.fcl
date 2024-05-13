@@ -1,0 +1,133 @@
+FUNCTION_BLOCK consumatori_pianta
+
+
+VAR_INPUT
+   specie_utile : REAL;
+   sp_protetta : REAL;
+   presenza_in_campo_qt : REAL;
+   presenza_in_campo_tempo : REAL;
+   specie : REAL;
+   genere : REAL;
+END_VAR
+
+VAR_OUTPUT
+   consumatori_pianta : REAL;
+END_VAR
+
+FUZZIFY specie_utile
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+END_FUZZIFY
+FUZZIFY sp_protetta
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+END_FUZZIFY
+FUZZIFY presenza_in_campo_qt
+   TERM alto := 0 ;
+   TERM basso := 1 ;
+   TERM medio := 2 ;
+END_FUZZIFY
+FUZZIFY presenza_in_campo_tempo
+   TERM alto := 0 ;
+   TERM basso := 1 ;
+   TERM medio := 2 ;
+END_FUZZIFY
+FUZZIFY specie
+   TERM assente := 0 ;
+END_FUZZIFY
+FUZZIFY genere
+   TERM assente := 0 ;
+END_FUZZIFY
+
+DEFUZZIFY consumatori_pianta
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   TERM unanswered := -1 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+IF S genere IS assente THEN A
+
+AAAASTA,
+AAAATTA,
+AAABSTA,
+AAABTTA,
+AAAMSTA,
+AAAMTTA,
+AABASTA,
+AABATTA,
+AABBSTA,
+AABBTTM,
+AABMSTA,
+AABMTTA,
+AAMASTA,
+AAMATTA,
+AAMBSTA,
+AAMBTTA,
+AAMMSTA,
+AAMMTTA,
+ABAASTA,
+ABAATTA,
+ABABSTA,
+ABABTTM,
+ABAMSTA,
+ABAMTTA,
+ABBASTA,
+ABBATTM,
+ABBBSTM,
+ABBBTTB,
+ABBMSTM,
+ABBMTTB,
+ABMASTA,
+ABMATTA,
+ABMBSTM,
+ABMBTTB,
+ABMMSTA,
+ABMMTTM,
+BAAASTA,
+BAAATTA,
+BAABSTA,
+BAABTTM,
+BAAMSTA,
+BAAMTTA,
+BABASTA,
+BABATTM,
+BABBSTM,
+BABBTTB,
+BABMSTM,
+BABMTTB,
+BAMASTA,
+BAMATTA,
+BAMBSTM,
+BAMBTTB,
+BAMMSTA,
+BAMMTTM,
+BBAASTA,
+BBAATTM,
+BBABSTM,
+BBABTTB,
+BBAMSTM,
+BBAMTTB,
+BBBASTM,
+BBBATTB,
+BBBBSTM,
+BBBBTTB,
+BBBMSTM,
+BBBMTTB,
+BBMASTM,
+BBMATTB,
+BBMBSTM,
+BBMBTTB,
+BBMMSTA,
+BBMMTTM
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

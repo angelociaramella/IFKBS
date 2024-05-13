@@ -1,0 +1,161 @@
+FUNCTION_BLOCK cambiamenti_popolazioni_consumatori
+
+
+VAR_INPUT
+   organismi_seme : REAL;
+   rischio_seme : REAL;
+   sostanze_tossiche_seme : REAL;
+   ingerimento_seme_organismi : REAL;
+END_VAR
+
+VAR_OUTPUT
+   cambiamenti_popolazioni_consumatori : REAL;
+END_VAR
+
+FUZZIFY organismi_seme
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY rischio_seme
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+END_FUZZIFY
+FUZZIFY sostanze_tossiche_seme
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY ingerimento_seme_organismi
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+
+DEFUZZIFY cambiamenti_popolazioni_consumatori
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+AAAAA,
+AAABA,
+AAAUA,
+AABAA,
+AABBA,
+AABUA,
+AAUAA,
+AAUBA,
+AAUUA,
+ABAAA,
+ABABA,
+ABAUA,
+ABBAA,
+ABBBA,
+ABBUA,
+ABUAA,
+ABUBA,
+ABUUA,
+AMAAA,
+AMABA,
+AMAUA,
+AMBAA,
+AMBBA,
+AMBUA,
+AMUAA,
+AMUBA,
+AMUUA,
+BAAAM,
+BAABM,
+BAAUM,
+BABAM,
+BABBM,
+BABUM,
+BAUAM,
+BAUBM,
+BAUUM,
+BBAAB,
+BBABB,
+BBAUB,
+BBBAB,
+BBBBB,
+BBBUB,
+BBUAB,
+BBUBB,
+BBUUB,
+BMAAB,
+BMABB,
+BMAUB,
+BMBAB,
+BMBBB,
+BMBUB,
+BMUAB,
+BMUBB,
+BMUUB,
+MAAAA,
+MAABA,
+MAAUA,
+MABAA,
+MABBA,
+MABUA,
+MAUAA,
+MAUBA,
+MAUUA,
+MBAAM,
+MBABM,
+MBAUM,
+MBBAM,
+MBBBM,
+MBBUM,
+MBUAM,
+MBUBM,
+MBUUM,
+MMAAM,
+MMABM,
+MMAUM,
+MMBAM,
+MMBBM,
+MMBUM,
+MMUAM,
+MMUBM,
+MMUUM,
+UAAAA,
+UAABA,
+UAAUA,
+UABAA,
+UABBB,
+UABUB,
+UAUAA,
+UAUBB,
+UAUUB,
+UBAAA,
+UBABA,
+UBAUA,
+UBBAA,
+UBBBB,
+UBBUB,
+UBUAA,
+UBUBB,
+UBUUB,
+UMAAA,
+UMABA,
+UMAUA,
+UMBAA,
+UMBBB,
+UMBUB,
+UMUAA,
+UMUBB,
+UMUUB
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

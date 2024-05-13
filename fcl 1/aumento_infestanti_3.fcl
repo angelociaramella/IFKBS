@@ -1,0 +1,49 @@
+FUNCTION_BLOCK aumento_infestanti_3
+
+
+VAR_INPUT
+   vie_migrazione_organi : REAL;
+   modificazione_genetica_potenzialmente_infestante : REAL;
+END_VAR
+
+VAR_OUTPUT
+   aumento_infestanti_3 : REAL;
+END_VAR
+
+FUZZIFY vie_migrazione_organi
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+END_FUZZIFY
+FUZZIFY modificazione_genetica_potenzialmente_infestante
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+
+DEFUZZIFY aumento_infestanti_3
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+AAA,
+ABM,
+AUB,
+BAM,
+BBB,
+BUB,
+MAA,
+MBM,
+MUB
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

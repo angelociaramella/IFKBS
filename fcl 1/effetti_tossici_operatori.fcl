@@ -1,0 +1,49 @@
+FUNCTION_BLOCK effetti_tossici_operatori
+
+
+VAR_INPUT
+   tossicita_operatori : REAL;
+   rischio_polline : REAL;
+END_VAR
+
+VAR_OUTPUT
+   effetti_tossici_operatori : REAL;
+END_VAR
+
+FUZZIFY tossicita_operatori
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+END_FUZZIFY
+FUZZIFY rischio_polline
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+END_FUZZIFY
+
+DEFUZZIFY effetti_tossici_operatori
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+AAA,
+ABM,
+AMA,
+BAB,
+BBB,
+BMB,
+MAM,
+MBM,
+MMM
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

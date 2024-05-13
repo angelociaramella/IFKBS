@@ -1,0 +1,60 @@
+FUNCTION_BLOCK contaminazione_campo
+
+
+VAR_INPUT
+   campi : REAL;
+   rischio_polline : REAL;
+   colture_sessualmente_compatibili : REAL;
+END_VAR
+
+VAR_OUTPUT
+   contaminazione_campo : REAL;
+END_VAR
+
+FUZZIFY campi
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY rischio_polline
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+END_FUZZIFY
+FUZZIFY colture_sessualmente_compatibili
+   TERM nonSo := 1 ;
+END_FUZZIFY
+
+DEFUZZIFY contaminazione_campo
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+   RULE 13 : IF colture_sessualmente_compatibili IS nonSo THEN A
+   
+AAA,
+ABM,
+AMM,
+BAB,
+BBB,
+BMB,
+MAA,
+MBB,
+MMM
+
+UHNB,
+ULNB,
+UMNB
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

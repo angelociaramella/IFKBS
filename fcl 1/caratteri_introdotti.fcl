@@ -1,0 +1,51 @@
+FUNCTION_BLOCK caratteri_introdotti
+
+
+VAR_INPUT
+   Espressione_inserto : REAL;
+   Espressione_inserto2 : REAL;
+   livello_espressione : REAL;
+END_VAR
+
+VAR_OUTPUT
+   caratteri_introdotti : REAL;
+END_VAR
+
+FUZZIFY Espressione_inserto
+   TERM costitutiva := 0 ;
+   TERM indotta := 1 ;
+END_FUZZIFY
+FUZZIFY Espressione_inserto2
+   TERM tessuto_spec := 0 ;
+   TERM ubiquitaria := 1 ;
+END_FUZZIFY
+FUZZIFY livello_espressione
+   TERM alto := 0 ;
+   TERM basso := 1 ;
+END_FUZZIFY
+
+DEFUZZIFY caratteri_introdotti
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+CTAA,
+CTBM,
+CUAA,
+CUBA,
+ITAM,
+ITBB,
+IUAA,
+IUBM
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

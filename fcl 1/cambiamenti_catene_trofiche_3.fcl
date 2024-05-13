@@ -1,0 +1,63 @@
+FUNCTION_BLOCK cambiamenti_catene_trofiche_3
+
+
+VAR_INPUT
+   organismi_pianta : REAL;
+   organismi_presenti : REAL;
+   consumatori_target_pianta : REAL;
+END_VAR
+
+VAR_OUTPUT
+   cambiamenti_catene_trofiche_3 : REAL;
+END_VAR
+
+FUZZIFY organismi_pianta
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+END_FUZZIFY
+FUZZIFY organismi_presenti
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY consumatori_target_pianta
+   TERM alto := 100 ;
+   TERM medio := 50 ;
+   TERM basso := 0 ;
+END_FUZZIFY
+
+DEFUZZIFY cambiamenti_catene_trofiche_3
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+A organismi_presenti IS unanswered THEN A
+B organismi_presenti IS unanswered THEN B ;
+      
+AAAA,
+AABM,
+AAMM,
+ABAA,
+ABBM,
+ABMM,
+BAAA,
+BABM,
+BAMM,
+BBAA,
+BBBM,
+BBMM,
+BUAB,
+BUBB,
+BUMB
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
