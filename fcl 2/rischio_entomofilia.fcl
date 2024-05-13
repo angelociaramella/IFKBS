@@ -1,0 +1,240 @@
+FUNCTION_BLOCK rischio_entomofilia
+
+
+VAR_INPUT
+   quantita_polline_diffuso_entomofila : REAL;
+   insetti_pronubi_presenti : REAL;
+   precauzione_adottate_riduzione_polline_2 : REAL;
+   misure_precauzione_adottate_2 : REAL;
+END_VAR
+
+VAR_OUTPUT
+   rischio_entomofilia : REAL;
+END_VAR
+
+FUZZIFY quantita_polline_diffuso_entomofila
+   TERM alto := 0 ;
+   TERM basso := 1 ;
+   TERM medio := 2 ;
+   TERM nullo := 3 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY insetti_pronubi_presenti
+   TERM alto := 0 ;
+   TERM basso := 1 ;
+   TERM medio := 2 ;
+   TERM nulla := 3 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY precauzione_adottate_riduzione_polline_2
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY misure_precauzione_adottate_2
+   TERM alto := (-1,0) (0,1) (1,1) (2,0)  ;
+   TERM basso := 2 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+
+DEFUZZIFY rischio_entomofilia
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+   RULE 181 : IF quantita_polline_diffuso_entomofila IS nullo THEN B
+   RULE 182 : IF quantita_polline_diffuso_entomofila IS unanswered THEN B
+   
+AAAAA,
+AAABB,
+AAAUA,
+AABAA,
+AABBA,
+AABUA,
+AAMAA,
+AAMBM,
+AAMUA,
+AAUAA,
+AAUBA,
+AAUUA,
+ABAAA,
+ABABB,
+ABAUA,
+ABBAA,
+ABBBA,
+ABBUA,
+ABMAA,
+ABMBM,
+ABMUA,
+ABUAA,
+ABUBA,
+ABUUA,
+AMAAA,
+AMABB,
+AMAUA,
+AMBAA,
+AMBBA,
+AMBUA,
+AMMAA,
+AMMBM,
+AMMUA,
+AMUAA,
+AMUBA,
+AMUUA,
+ANAAA,
+ANABB,
+ANAUA,
+ANBAA,
+ANBBA,
+ANBUA,
+ANMAA,
+ANMBM,
+ANMUA,
+ANUAA,
+ANUBA,
+ANUUA,
+AUAAA,
+AUABB,
+AUAUA,
+AUBAA,
+AUBBA,
+AUBUA,
+AUMAA,
+AUMBM,
+AUMUA,
+AUUAA,
+AUUBA,
+AUUUA,
+BAAAM,
+BAABB,
+BAAUM,
+BABAM,
+BABBM,
+BABUM,
+BAMAM,
+BAMBB,
+BAMUM,
+BAUAM,
+BAUBM,
+BAUUM,
+BBAAB,
+BBABB,
+BBAUB,
+BBBAB,
+BBBBB,
+BBBUB,
+BBMAB,
+BBMBB,
+BBMUB,
+BBUAB,
+BBUBB,
+BBUUB,
+BMAAB,
+BMABB,
+BMAUB,
+BMBAB,
+BMBBB,
+BMBUB,
+BMMAB,
+BMMBB,
+BMMUB,
+BMUAB,
+BMUBB,
+BMUUB,
+BNAAB,
+BNABB,
+BNAUB,
+BNBAB,
+BNBBB,
+BNBUB,
+BNMAB,
+BNMBB,
+BNMUB,
+BNUAB,
+BNUBB,
+BNUUB,
+BUAAB,
+BUABB,
+BUAUB,
+BUBAB,
+BUBBB,
+BUBUB,
+BUMAB,
+BUMBB,
+BUMUB,
+BUUAB,
+BUUBB,
+BUUUB,
+MAAAA,
+MAABB,
+MAAUA,
+MABAA,
+MABBA,
+MABUA,
+MAMAA,
+MAMBB,
+MAMUA,
+MAUAA,
+MAUBA,
+MAUUA,
+MBAAM,
+MBABB,
+MBAUM,
+MBBAM,
+MBBBM,
+MBBUM,
+MBMAM,
+MBMBB,
+MBMUM,
+MBUAM,
+MBUBM,
+MBUUM,
+MMAAM,
+MMABB,
+MMAUM,
+MMBAM,
+MMBBM,
+MMBUM,
+MMMAM,
+MMMBB,
+MMMUM,
+MMUAM,
+MMUBM,
+MMUUM,
+MNAAM,
+MNABB,
+MNAUM,
+MNBAM,
+MNBBM,
+MNBUM,
+MNMAM,
+MNMBB,
+MNMUM,
+MNUAM,
+MNUBM,
+MNUUM,
+MUAAM,
+MUABB,
+MUAUM,
+MUBAM,
+MUBBM,
+MUBUM,
+MUMAM,
+MUMBB,
+MUMUM,
+MUUAM,
+MUUBM,
+MUUUM
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

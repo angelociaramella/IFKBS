@@ -1,0 +1,49 @@
+FUNCTION_BLOCK rischio_seme
+
+
+VAR_INPUT
+   caratteristiche_seme : REAL;
+   vie_migrazione_seme : REAL;
+END_VAR
+
+VAR_OUTPUT
+   rischio_seme : REAL;
+END_VAR
+
+FUZZIFY caratteristiche_seme
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+END_FUZZIFY
+FUZZIFY vie_migrazione_seme
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+END_FUZZIFY
+
+DEFUZZIFY rischio_seme
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+AAA,
+ABM,
+AMA,
+BAM,
+BBB,
+BMM,
+MAA,
+MBM,
+MMM
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

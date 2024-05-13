@@ -1,0 +1,24 @@
+Tempo di esecuzione,# Regole,# Regole Coperte,Numero Pattern,#Condizioni Totali,#Condizioni Compresse,Percentuale di compressione,Risoluzione,Iterazioni,Sovrapposizione
+0.002,36,36,9,108,51,52.78,1,10,true
+ RULE 
+AAB,A,,,
+AAM,A,,,
+AMA,A,,,
+AUA,B,,,
+AUM,B,,,
+BAA,A,,,
+BBM,B,,,
+BMB,B,,,
+MAA,A,,,
+MAB,M,,,
+MUA,B,,,
+MUM,B,,,
+XM,M,0.78,7,2
+AXA,A,0.75,3,1
+MXM,M,0.75,3,1
+XAM,M,0.50,2,1
+XBM,M,0.50,2,1
+B,B,0.32,8,4
+XXB,B,0.32,8,4
+AXM,M,0.22,2,2
+MXA,M,0.22,2,2

@@ -1,0 +1,109 @@
+FUNCTION_BLOCK rischio_vie_migrazione_organi
+
+
+VAR_INPUT
+   diffusione_pratiche_propagazione_vegetativA: REAL;
+   misure_precauzione_adottate_11 : REAL;
+   misure_precauzione_adottate_12 : REAL;
+END_VAR
+
+VAR_OUTPUT
+   rischio_vie_migrazione_organi : REAL;
+END_VAR
+
+FUZZIFY diffusione_pratiche_propagazione_vegetativa
+   TERMalto := 0 ;
+   TERMbasso := 1 ;
+   TERMmedio := 2 ;
+   TERMnullo := 3 ;
+   TERMunanswered := -1 ;
+END_FUZZIFY
+FUZZIFY misure_precauzione_adottate_11
+   TERMalto := (-1,0) (0,1) (1,1) (2,0)  ;
+   TERMbasso := 2 ;
+   TERMunanswered := -1 ;
+END_FUZZIFY
+FUZZIFY misure_precauzione_adottate_12
+   TERMalto := 100 ;
+   TERMbasso := 0 ;
+   TERMmedio := 50 ;
+   TERMunanswered := -1 ;
+END_FUZZIFY
+
+DEFUZZIFY rischio_vie_migrazione_organi
+   TERMalto := 100 ;
+   TERMbasso := 0 ;
+   TERMmedio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU: MAX;
+
+AAAA,
+AABA,
+AAMA,
+AAUA,
+ABAA,
+ABBB,
+ABMM,
+ABUB,
+AUAB,
+AUBB,
+AUMB,
+AUUB,
+BAAA,
+BABB,
+BAMM,
+BAUB,
+BBAB,
+BBBB,
+BBMB,
+BBUB,
+BUAB,
+BUBB,
+BUMB,
+BUUB,
+MAAA,
+MABM,
+MAMM,
+MAUB,
+MBAM,
+MBBB,
+MBMM,
+MBUB,
+MUAB,
+MUBB,
+MUMB,
+MUUB,
+NAAB,
+NABB,
+NAMB,
+NAUB,
+NBAB,
+NBBB,
+NBMB,
+NBUB,
+NUAB,
+NUBB,
+NUMB,
+NUUB,
+UAAB,
+UABB,
+UAMB,
+UAUB,
+UBAB,
+UBBB,
+UBMB,
+UBUB,
+UUAB,
+UUBB,
+UUMB,
+UUUB
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

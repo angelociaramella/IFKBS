@@ -1,0 +1,63 @@
+FUNCTION_BLOCK rischio_sopravvivenza_seme
+
+
+VAR_INPUT
+   durata_massima_dormienza : REAL;
+   durata_sopravvivenza : REAL;
+END_VAR
+
+VAR_OUTPUT
+   rischio_sopravvivenza_seme : REAL;
+END_VAR
+
+FUZZIFY durata_massima_dormienza
+   TERM alto := (2,0) (3,1) (4,1) (5,0)  ;
+   TERM basso := 1 ;
+   TERM medio := 2 ;
+   TERM nulla := 0 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY durata_sopravvivenza
+   TERM alto := (2,0) (3,1) (4,1) (5,0)  ;
+   TERM basso := 1 ;
+   TERM medio := 2 ;
+   TERM nulla := 0 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+
+DEFUZZIFY rischio_sopravvivenza_seme
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+   RULE 17 : IF durata_massima_dormienza IS unanswered AND durata_sopravvivenza IS unanswered THEN B
+   
+AAA,
+ABM,
+AMA,
+ANM,
+BAB,
+BBB,
+BMB,
+BNB,
+MAA,
+MBB,
+MMM,
+MNB,
+NAB,
+NBB,
+NMB,
+NNB
+
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

@@ -1,0 +1,92 @@
+FUNCTION_BLOCK pratiche
+
+
+VAR_INPUT
+   seme_raccolto : REAL;
+   metodo_raccolta : REAL;
+   seme_raccolto_trasportato : REAL;
+   misure_precauzione_adottate_7 : REAL;
+   misure_precauzione_adottate_8 : REAL;
+END_VAR
+
+VAR_OUTPUT
+   pratiche : REAL;
+END_VAR
+
+FUZZIFY seme_raccolto
+   TERM alto := 2  ;
+   TERM basso := 0 ;
+   TERM unanswered := -1 ;
+   TERM nonSo := 1 ;
+END_FUZZIFY
+FUZZIFY metodo_raccolta
+   TERM manuale := 0 ;
+   TERM meccanica := 1 ;
+END_FUZZIFY
+FUZZIFY seme_raccolto_trasportato
+   TERM alto := 0 ;
+   TERM basso := 1 ;
+   TERM medio := 2 ;
+END_FUZZIFY
+FUZZIFY misure_precauzione_adottate_7
+   TERM alto := (-1,0) (0,1) (1,1) (2,0)  ;
+   TERM basso := 2 ;
+END_FUZZIFY
+FUZZIFY misure_precauzione_adottate_8
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+
+DEFUZZIFY pratiche
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+   RULE 31 : IF seme_raccolto IS basso THEN B
+   RULE 32 : IF seme_raccolto IS nonSo THEN A
+   
+ALAAUA,
+ALABAB,
+ALABBM,
+ALABMM,
+ALABUA,
+ALBAUA,
+ALBBAB,
+ALBBBB,
+ALBBMB,
+ALBBUB,
+ALMAUA,
+ALMBAB,
+ALMBBB,
+ALMBMB,
+ALMBUM,
+ACAAUA,
+ACABAB,
+ACABBM,
+ACABMM,
+ACABUA,
+ACBAUA,
+ACBBAB,
+ACBBBB,
+ACBBMB,
+ACBBUB,
+ACMAUA,
+ACMBAB,
+ACMBBB,
+ACMBMB,
+ACMBUM
+
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

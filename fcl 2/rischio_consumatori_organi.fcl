@@ -1,0 +1,49 @@
+FUNCTION_BLOCK rischio_consumatori_organi
+
+
+VAR_INPUT
+   sostanze_tossiche_organi_PS : REAL;
+   ingerimento_seme_organismi_2 : REAL;
+END_VAR
+
+VAR_OUTPUT
+   rischio_consumatori_organi : REAL;
+END_VAR
+
+FUZZIFY sostanze_tossiche_organi_PS
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY ingerimento_seme_organismi_2
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+
+DEFUZZIFY rischio_consumatori_organi
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+AAA,
+ABM,
+AUB,
+BAM,
+BBB,
+BUB,
+UAB,
+UBB,
+UUB
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

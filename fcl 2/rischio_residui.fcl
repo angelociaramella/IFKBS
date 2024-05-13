@@ -1,0 +1,149 @@
+FUNCTION_BLOCK rischio_residui
+
+
+VAR_INPUT
+   residui_colturali_presenti : REAL;
+   metodo_smaltimento_residui : REAL;
+   misure_precauzione_adottate_13 : REAL;
+   misure_precauzione_adottate_14 : REAL;
+END_VAR
+
+VAR_OUTPUT
+   rischio_residui : REAL;
+END_VAR
+
+FUZZIFY residui_colturali_presenti
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+END_FUZZIFY
+FUZZIFY metodo_smaltimento_residui
+   TERM alto := 0 ;
+   TERM basso := (1,0) (2,1) (3,0) (4,1) (5,0) ;
+   TERM medio := (0,0) (1,1) (2,0) (3,1) (4,0) ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY misure_precauzione_adottate_13
+   TERM alto := (-1,0) (0,1) (1,1) (2,0)  ;
+   TERM basso := 2 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY misure_precauzione_adottate_14
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+
+DEFUZZIFY rischio_residui
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+AAAAA,
+AAABA,
+AAAMA,
+AAAUA,
+AABAB,
+AABBM,
+AABMM,
+AABUB,
+AAUAB,
+AAUBB,
+AAUMB,
+AAUUB,
+ABAAA,
+ABABM,
+ABAMA,
+ABAUA,
+ABBAB,
+ABBBB,
+ABBMB,
+ABBUB,
+ABUAB,
+ABUBB,
+ABUMB,
+ABUUB,
+AMAAA,
+AMABA,
+AMAMA,
+AMAUA,
+AMBAB,
+AMBBB,
+AMBMM,
+AMBUB,
+AMUAB,
+AMUBB,
+AMUMB,
+AMUUB,
+AUAAB,
+AUABB,
+AUAMB,
+AUAUB,
+AUBAB,
+AUBBB,
+AUBMB,
+AUBUB,
+AUUAB,
+AUUBB,
+AUUMB,
+AUUUB,
+BAAAB,
+BAABB,
+BAAMB,
+BAAUB,
+BABAB,
+BABBB,
+BABMB,
+BABUB,
+BAUAB,
+BAUBB,
+BAUMB,
+BAUUB,
+BBAAB,
+BBABB,
+BBAMB,
+BBAUB,
+BBBAB,
+BBBBB,
+BBBMB,
+BBBUB,
+BBUAB,
+BBUBB,
+BBUMB,
+BBUUB,
+BMAAB,
+BMABB,
+BMAMB,
+BMAUB,
+BMBAB,
+BMBBB,
+BMBMB,
+BMBUB,
+BMUAB,
+BMUBB,
+BMUMB,
+BMUUB,
+BUAAB,
+BUABB,
+BUAMB,
+BUAUB,
+BUBAB,
+BUBBB,
+BUBMB,
+BUBUB,
+BUUAB,
+BUUBB,
+BUUMB,
+BUUUB
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

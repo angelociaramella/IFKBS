@@ -1,0 +1,67 @@
+FUNCTION_BLOCK rischio_caratteristiche_seme
+
+
+VAR_INPUT
+   tipo_frutto : REAL;
+   dimensione_seme : REAL;
+   numero_semi_pianta : REAL;
+END_VAR
+
+VAR_OUTPUT
+   rischio_caratteristiche_seme : REAL;
+END_VAR
+
+FUZZIFY tipo_frutto
+   TERM deiescente := 0 ;
+   TERM indeiescente := 1 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY dimensione_seme
+   TERM grande := 0 ;
+   TERM medio := 1 ;
+   TERM piccolo := 2 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY numero_semi_pianta
+   TERM alto := 0 ;
+   TERM basso := 1 ;
+   TERM medio := 2 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+
+DEFUZZIFY rischio_caratteristiche_seme
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+   RULE 1 : D G A
+   RULE 2 : D G B M
+   RULE 3 : D G M A
+   RULE 4 : D M A
+   RULE 5 : D M B M
+   RULE 6 : D M M M
+   RULE 7 : D P A
+   RULE 8 : D P B M
+   RULE 9 : D P M A
+   RULE 10 : I G A
+   RULE 11 : I G B M
+   RULE 12 : I G M A
+   RULE 13 : I M A
+   RULE 14 : I M B M
+   RULE 15 : I M M M
+   RULE 16 : I P A
+   RULE 17 : I P B M
+   RULE 18 : I P M M
+   RULE 19 : U U U B
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

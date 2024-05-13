@@ -1,0 +1,49 @@
+FUNCTION_BLOCK rischio_invasivita
+
+
+VAR_INPUT
+   habitat_naturale_sopravvivenza_PSGM : REAL;
+   modificazione_genetica_potenzialmente_invasiva : REAL;
+END_VAR
+
+VAR_OUTPUT
+   rischio_invasivita : REAL;
+END_VAR
+
+FUZZIFY habitat_naturale_sopravvivenza_PSGM
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+FUZZIFY modificazione_genetica_potenzialmente_invasiva
+   TERM alto := (0,0) (1,1) (2,1)  ;
+   TERM basso := 0 ;
+   TERM unanswered := -1 ;
+END_FUZZIFY
+
+DEFUZZIFY rischio_invasivita
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+AAA,
+ABM,
+AUB,
+BAM,
+BBB,
+BUB,
+UAB,
+UBB,
+UUB
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

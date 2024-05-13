@@ -1,0 +1,58 @@
+FUNCTION_BLOCK rischio_ibridazione_selvatiche
+
+
+VAR_INPUT
+   ibridazione_specie_sessualmente_compatibili : REAL;
+   piante_sessualmente_compatibili_infestanti : REAL;
+END_VAR
+
+VAR_OUTPUT
+   rischio_ibridazione_selvatiche : REAL;
+END_VAR
+
+FUZZIFY ibridazione_specie_sessualmente_compatibili
+   TERM alto := 2  ;
+   TERM basso := 0 ;
+   TERM unanswered := -1 ;
+   TERM nonSo := 1 ;
+END_FUZZIFY
+FUZZIFY piante_sessualmente_compatibili_infestanti
+   TERM alto := 2  ;
+   TERM basso := 0 ;
+   TERM unanswered := -1 ;
+   TERM nonSo := 1 ;
+END_FUZZIFY
+
+DEFUZZIFY rischio_ibridazione_selvatiche
+   TERM alto := 100 ;
+   TERM basso := 0 ;
+   TERM medio := 50 ;
+   METHOD : COGS;
+   DEFAULT := -1;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+   AND : MIN;
+   ACT : MIN;
+   ACCU : MAX;
+
+AAA,
+ABM,
+AOA,
+AUA,
+BAM,
+BBB,
+BOA,
+BUB,
+OAA,
+OBA,
+OOA,
+OUA,
+UAB,
+UBB,
+UOB,
+UUB
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
